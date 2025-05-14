@@ -31,7 +31,7 @@ const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <span className="self-center text-2xl font-bold whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="self-center text-2xl font-bold whitespace-nowrap text-black">
                 NexVibe
               </span>
             </Link>
