@@ -1,118 +1,375 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import {
+  Clock,
+  FolderOpen,
+  Student,
+  User,
+  Users,
+  DeviceMobile,
+  Cloud,
+  Code,
+} from "@phosphor-icons/react";
+import TestimoniesMarquee from "@/components/Testimonies";
+import { TypeAnimation } from "react-type-animation";
+import FadeInOnScroll from "@/components/animations/FadeInOnScroll";
+import StaggeredFadeIn from "@/components/animations/StaggeredFadeIn";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="mt-12 bg-gradient-to-b from-gray-200 to-white">
+      <section className="container mx-auto px-4">
+        <div className="flex flex-col-reverse md:flex-row gap-4 sm:gap-6 md:gap-8 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] items-center">
+          <FadeInOnScroll
+            direction="left"
+            className="text-center md:text-left px-4 sm:px-6 md:px-8"
           >
-            By{' '}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-5 md:mb-6 flex flex-col items-center md:items-start text-center">
+              <span className="text-gray-500">Hallo, kami adalah </span>
+              <TypeAnimation
+                sequence={[
+                  "NexVibe",
+                  12000,
+                  "Tech Partner",
+                  4000,
+                  "Digital Innovator",
+                  4000,
+                  "Problem Solver",
+                  4000,
+                ]}
+                wrapper="span"
+                speed={50}
+                deletionSpeed={50}
+                repeat={Infinity}
+                cursor={true}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
+              />
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-7 md:mb-8 leading-relaxed">
+              Kami adalah perusahaan teknologi yang berfokus pada pengembangan
+              solusi digital inovatif untuk membantu bisnis Anda berkembang di
+              era digital.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <button
+                onClick={() => router.push("/contact")}
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Hubungi Kami
+              </button>
+              <button
+                onClick={() => router.push("/portfolio")}
+                className="w-full sm:w-auto border-2 border-blue-500 text-blue-500 px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Portfolio
+              </button>
+            </div>
+          </FadeInOnScroll>
+          <FadeInOnScroll
+            direction="right"
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[480px] mt-8 md:mt-0"
+          >
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
+              src="/undraw_web-developer_ggt0.svg"
+              alt="Hero Image"
+              fill
+              className="object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
               priority
             />
-          </a>
+          </FadeInOnScroll>
         </div>
-      </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+      <section className="container mx-auto px-4 py-20">
+        <FadeInOnScroll>
+          <h2 className="text-3xl font-bold text-center mb-4 relative">
+            Layanan Kami
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></div>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+            Kami menyediakan berbagai layanan teknologi informasi yang
+            komprehensif untuk memenuhi kebutuhan bisnis Anda
           </p>
-        </a>
+        </FadeInOnScroll>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <StaggeredFadeIn
+          className="flex flex-col md:flex-row gap-8"
+          staggerDelay={0.2}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <div className="flex-1 bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 absolute -translate-y-16 border-2 border-gray-300 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mb-6">
+              <Code size={32} className="text-blue-500" />
+            </div>
+            <h3 className="text-xl font-semibold mt-4 mb-4">Web Development</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Pembuatan website modern dan responsif sesuai kebutuhan bisnis
+              Anda
+            </p>
+            <ul className="text-gray-600 space-y-2">
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Custom Website Development
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                E-commerce Solutions
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                CMS Development
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Web Application
+              </li>
+            </ul>
+          </div>
+          <div className="flex-1 bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 absolute -translate-y-16 border-2 border-gray-300 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mb-6">
+              <DeviceMobile size={32} className="text-blue-500" />
+            </div>
+            <h3 className="text-xl font-semibold mt-4 mb-4">
+              Mobile Development
+            </h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Pengembangan aplikasi mobile untuk Android dan iOS
+            </p>
+            <ul className="text-gray-600 space-y-2">
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Native Android Development
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Native iOS Development
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Cross-platform Development
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Mobile UI/UX Design
+              </li>
+            </ul>
+          </div>
+          <div className="flex-1 bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-16 h-16 absolute -translate-y-16 border-2 border-gray-300 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mb-6">
+              <Cloud size={32} className="text-blue-500" />
+            </div>
+            <h3 className="text-xl font-semibold mt-4 mb-4">Cloud Solutions</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Solusi cloud yang aman dan scalable untuk mengoptimalkan
+              infrastruktur IT Anda
+            </p>
+            <ul className="text-gray-600 space-y-2">
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Cloud Migration
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                Cloud Infrastructure
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                DevOps Services
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                24/7 Monitoring
+              </li>
+            </ul>
+          </div>
+        </StaggeredFadeIn>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+      <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+        <div className="container mx-auto px-4">
+          <FadeInOnScroll>
+            <h2 className="text-3xl font-bold text-center mb-4 relative">
+              Mengapa Memilih Kami?
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></div>
+            </h2>
+            <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+              Kami berkomitmen untuk memberikan solusi terbaik dengan standar
+              kualitas tinggi
+            </p>
+          </FadeInOnScroll>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <StaggeredFadeIn
+            className="flex flex-col justify-center md:flex-row gap-8"
+            staggerDelay={0.15}
+          >
+            <div className="flex-1 text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock size={40} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">6 Bulan+</h3>
+              <p className="text-gray-600">Pengalaman di sekolah</p>
+            </div>
+            <div className="flex-1 text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FolderOpen size={40} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">5+</h3>
+              <p className="text-gray-600">Proyek selesai</p>
+            </div>
+            <div className="flex-1 text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users size={40} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">15+</h3>
+              <p className="text-gray-600">Klien puas</p>
+            </div>
+            <div className="flex-1 text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Student size={40} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">2+</h3>
+              <p className="text-gray-600">Expert developer</p>
+            </div>
+          </StaggeredFadeIn>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-20">
+        <FadeInOnScroll>
+          <h2 className="text-3xl font-bold text-center mb-4 relative">
+            Testimonial Klien
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></div>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+            Apa kata klien tentang layanan kami
           </p>
-        </a>
-      </div>
+        </FadeInOnScroll>
+        <FadeInOnScroll>
+          <TestimoniesMarquee />
+        </FadeInOnScroll>
+      </section>
+
+      <section className="container mx-auto px-4 py-20">
+        <FadeInOnScroll>
+          <h2 className="text-3xl font-bold text-center mb-4 relative">
+            Hubungi Kami
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></div>
+          </h2>
+          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+            Kami siap membantu mewujudkan solusi digital untuk bisnis Anda
+          </p>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll>
+          <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+            <form
+              method="POST"
+              action="https://formsubmit.co/kevinsinatria8@gmail.com"
+              className="space-y-6"
+            >
+              {/* Hidden Fields for FormSubmit */}
+              <input
+                type="hidden"
+                name="_subject"
+                value="Pesan Baru dari Website NexVibe"
+              />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://nexvibe.vercel.app/"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_autoresponse"
+                value="Terima kasih telah menghubungi NexVibe! Kami akan segera merespon pesan Anda."
+              />
+
+              {/* Nama */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Nama Lengkap
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  placeholder="Masukkan nama lengkap Anda"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  placeholder="Masukkan email Anda"
+                />
+              </div>
+
+              {/* Nomor Telepon */}
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Nomor Telepon
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  placeholder="Masukkan nomor telepon Anda"
+                />
+              </div>
+
+              {/* Pesan */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Pesan
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  placeholder="Tuliskan pesan Anda"
+                ></textarea>
+              </div>
+
+              {/* Tombol Submit */}
+              <div>
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Kirim Pesan
+                </button>
+              </div>
+            </form>
+          </div>
+        </FadeInOnScroll>
+      </section>
     </main>
-  )
+  );
 }
