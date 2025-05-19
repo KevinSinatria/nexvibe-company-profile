@@ -16,9 +16,37 @@ import FadeInOnScroll from "@/components/animations/FadeInOnScroll";
 import StaggeredFadeIn from "@/components/animations/StaggeredFadeIn";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { use } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import NexVibe3d from "@/components/models/NexVibe3d";
 
 export default function Home() {
   const router = useRouter();
+
+  const contactFormHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const loadingToast = toast.loading("Mengirim pesan...");
+
+    try {
+      const res = await axios.post(
+        "https://formsubmit.co/kevinsinatria8@gmail.com",
+        formData
+      );
+      if (res.status === 200) {
+        toast.dismiss(loadingToast);
+        toast.success("Pesan berhasil dikirim! Kami akan segera merespon.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.dismiss(loadingToast);
+        toast.error("Gagal mengirim pesan. Silakan coba lagi.");
+      }
+    } catch (err) {
+      toast.dismiss(loadingToast);
+      toast.error("Terjadi kesalahan. Periksa koneksi Anda.");
+    }
+  };
   return (
     <>
       <Head>
@@ -76,13 +104,14 @@ export default function Home() {
               direction="right"
               className="relative w-full h-[300px] sm:h-[400px] md:h-[480px] mt-8 md:mt-0"
             >
-              <Image
+              {/* <Image
                 src="/undraw_web-developer_ggt0.svg"
                 alt="Hero Image"
                 fill
                 className="object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
                 priority
-              />
+              /> */}
+              <NexVibe3d />
             </FadeInOnScroll>
           </div>
         </section>
@@ -273,8 +302,7 @@ export default function Home() {
           <FadeInOnScroll>
             <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
               <form
-                method="POST"
-                action="https://formsubmit.co/kevinsinatria8@gmail.com"
+                onSubmit={async (e) => contactFormHandler(e)}
                 className="space-y-6"
               >
                 {/* Hidden Fields for FormSubmit */}
@@ -282,11 +310,6 @@ export default function Home() {
                   type="hidden"
                   name="_subject"
                   value="Pesan Baru dari Website NexVibe"
-                />
-                <input
-                  type="hidden"
-                  name="_next"
-                  value="https://nexvibe.vercel.app/"
                 />
                 <input type="hidden" name="_captcha" value="false" />
                 <input

@@ -27,6 +27,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setIsDropdownOpen(null);
   };
 
   return (
@@ -42,7 +43,7 @@ const Navbar = () => {
             : "bg-white/50 border-b border-gray-300 backdrop-blur-xl"
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-10 h-full flex justify-between items-center">
+        <div className="container mx-auto px-4 md:px-10 h-full flex justify-between items-center">
           <h1>
             <Link href="/">
               <Image
@@ -78,7 +79,9 @@ const Navbar = () => {
               <button
                 className={`py-3 px-4 flex items-center h-full gap-2 ${
                   isDropdownOpen === "about" ? "text-blue-500" : ""
-                } ${pathname === "/about" ? "text-blue-500 font-semibold" : ""}`}
+                } ${
+                  pathname === "/about" ? "text-blue-500 font-semibold" : ""
+                }`}
                 onClick={() => {
                   router.push("/about#hero");
                   setIsDropdownOpen(null);
