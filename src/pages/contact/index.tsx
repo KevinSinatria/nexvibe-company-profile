@@ -13,8 +13,34 @@ import {
 import FadeInOnScroll from "@/components/animations/FadeInOnScroll";
 import StaggeredFadeIn from "@/components/animations/StaggeredFadeIn";
 import Head from "next/head";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Contact = () => {
+  const contactFormHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const loadingToast = toast.loading("Mengirim pesan...");
+
+    try {
+      const res = await axios.post(
+        "https://formsubmit.co/kevinsinatria8@gmail.com",
+        formData
+      );
+      if (res.status === 200) {
+        toast.dismiss(loadingToast);
+        toast.success("Pesan berhasil dikirim! Kami akan segera merespon.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.dismiss(loadingToast);
+        toast.error("Gagal mengirim pesan. Silakan coba lagi.");
+      }
+    } catch (err) {
+      toast.dismiss(loadingToast);
+      toast.error("Terjadi kesalahan. Periksa koneksi Anda.");
+    }
+  };
+
   return (
     <>
       <Head>
@@ -153,8 +179,7 @@ const Contact = () => {
                     <div className="absolute -bottom-2 left-0 w-16 h-1 bg-blue-500 rounded-full"></div>
                   </h2>
                   <form
-                    method="POST"
-                    action="https://formsubmit.co/kevinsinatria8@gmail.com"
+                    onSubmit={(e) => contactFormHandler(e)}
                     className="space-y-6"
                   >
                     {/* Hidden Fields for FormSubmit */}
